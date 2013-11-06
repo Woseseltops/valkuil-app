@@ -10,19 +10,31 @@
             size: self.size
 
     TextInput:
-        size: [root.width-100,root.height/2]
-        y: 50
-        x: root.center_x - (self.width/2)
+        size: [root.width-20,root.height/2]
+        center: root.center
+        y: root.height - self.height - 10
+        font_size: 25
 
     Button:
         id: ok
-        y: 10
+        y: root.height / 2 - 50
         text: 'Controleer'
         x: root.center_x - (self.width/2)
         height: 20
+        size: [200,30]
+        font_size: 30
 
     Image:
         source: 'valkuil_logo.png'
-        center: root.center
         size: (500,500)
-        y: root.height - 350
+        y: -150
+        x: root.center_x - (self.width/2)
+
+<Output_screen>
+
+    canvas.before:
+        Color:
+            rgba: 0.808, 0.812, 0.691, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
