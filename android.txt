@@ -1,0 +1,3 @@
+title=Valkuil
+author=Wessel Stoop
+orientation=portrait
