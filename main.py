@@ -17,14 +17,34 @@ import random
 
 from kivy.uix.screenmanager import ScreenManager, Screen
 
+from kivy.config import Config
+Config.set('graphics', 'width', '475')
+Config.set('graphics', 'height', '675')
+
 class Input_screen(Screen):
     pass;
 
 class Output_screen(Screen):
 
-    def change_error(self):
-#        self.mistake_text.text = 'hoi'
-        self.mistake_box.mistake_text.text = 'Nieuwe fout'
+    found_errors = [('eigelijk','eigenlijk'),('onmiddelijk','onmiddellijk'),
+        ('vind','vindt')]
+    n = 0;
+
+    def previous_error(self):
+        if self.n > 0:
+            self.n -= 1;
+
+        self.update_error(self.n);
+
+    def next_error(self):
+        if self.n < len(self.found_errors) -1:
+            self.n += 1;
+
+        self.update_error(self.n);
+
+    def update_error(self,error):
+        self.mistake_box.mistake_text.text = self.found_errors[self.n][0];
+        self.correction_box.correction_text.text = self.found_errors[self.n][1];
 
 class ValkuilApp(App):
 

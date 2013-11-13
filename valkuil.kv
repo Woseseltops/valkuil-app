@@ -34,6 +34,7 @@
 <Output_screen>
 
     mistake_box: mistake_box
+    correction_box: correction_box
 
     GridLayout:
         canvas:
@@ -49,6 +50,7 @@
             center_x: root.center_x
             font_size: 100
             y: root.height - 10 - self.height
+            on_press: root.previous_error()
 
         Label:
             id: mistake_box
@@ -72,6 +74,8 @@
                 text: 'Fout'
 
         Label:
+            id: correction_box
+            correction_text: correction_text
             canvas:
                 Color:
                     rgba: .615, 0.937, 0.732, 1
@@ -84,6 +88,7 @@
             y: root.center_y - self.height/2
 
             Label:
+                id: correction_text
                 center_x: root.center_x
                 center_y: root.center_y
                 font_size: 25
@@ -95,4 +100,4 @@
             center_x: root.center_x
             y: 10
             font_size: 100
-            on_press: root.change_error()
+            on_press: root.next_error()
