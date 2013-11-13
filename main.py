@@ -10,27 +10,35 @@ from kivy.uix.image import Image
 from kivy.uix.gridlayout import GridLayout
 from kivy.graphics import Color
 
-from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty
+from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty, StringProperty
 from kivy.vector import Vector
 from kivy.clock import Clock
 import random
 
-class Input_screen(GridLayout):
+from kivy.uix.screenmanager import ScreenManager, Screen
+
+class Input_screen(Screen):
     pass;
 
-class Output_screen(Widget):
-    pass;
+class Output_screen(Screen):
 
-def hoi(a):
-    print('hoi')
+    def change_error(self):
+#        self.mistake_text.text = 'hoi'
+        self.mistake_box.mistake_text.text = 'Nieuwe fout'
 
 class ValkuilApp(App):
 
     def build(self):
-        input_screen = Input_screen();
-        input_screen.ok_button.bind(on_press=hoi)
+        sm = ScreenManager()
+        i = Input_screen(name='input');
+        o = Output_screen(name='output');
+        sm.add_widget(i)
+        sm.add_widget(o)
 
-        return input_screen
+#        self.input_screen = Input_screen()
+#        self.input_screen.ok_button.bind(on_press=self.switch_screen)
+
+        return sm
 
 if __name__ == '__main__':
-    ValkuilApp().run();
+    ValkuilApp().run()
