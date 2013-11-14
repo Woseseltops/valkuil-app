@@ -24,6 +24,9 @@ Config.set('graphics', 'height', '675')
 class Input_screen(Screen):
     pass;
 
+class Text_block(Widget):
+    pass;
+
 class Output_screen(Screen):
 
     found_errors = [('eigelijk','eigenlijk'),('onmiddelijk','onmiddellijk'),
@@ -43,8 +46,8 @@ class Output_screen(Screen):
         self.update_error(self.n);
 
     def update_error(self,error):
-        self.mistake_box.mistake_text.text = self.found_errors[self.n][0];
-        self.correction_box.correction_text.text = self.found_errors[self.n][1];
+        self.mistake_box.text = self.found_errors[self.n][0];
+        self.correction_box.text = self.found_errors[self.n][1];
 
 class ValkuilApp(App):
 

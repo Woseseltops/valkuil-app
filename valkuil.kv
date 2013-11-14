@@ -1,3 +1,5 @@
+
+
 <Input_screen>:
 
     ok_button: ok
@@ -54,7 +56,7 @@
 
         Label:
             id: mistake_box
-            mistake_text: mistake_text
+#            mistake_text: mistake_text
             canvas:
                 Color:
                     rgba: 1, 0.875, 0.875, 1
@@ -65,13 +67,16 @@
             size: [root.width-(root.width/10),root.height/10]
             center_x: root.center_x
             y: root.center_y + self.height/2
+            text: 'Fout'
 
             Label:
                 id: mistake_text
-                center_x: root.center_x
-                center_y: root.center_y + self.height/2
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
                 font_size: 25
-                text: 'Fout'
+                markup: True
+                color: [0.968, 0.302, 0.302]
+                text: self.parent.text
 
         Label:
             id: correction_box
@@ -86,13 +91,16 @@
             size: [root.width-(root.width/10),root.height/10]
             center_x: root.center_x
             y: root.center_y - self.height/2
+            text: 'Verbetering'
 
             Label:
                 id: correction_text
-                center_x: root.center_x
-                center_y: root.center_y
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
                 font_size: 25
-                text: 'Verbetering'
+                markup: True
+                color: [0, 0, 0]
+                text: self.parent.text
 
         Button:
             id: forward
